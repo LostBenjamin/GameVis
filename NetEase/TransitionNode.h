@@ -9,13 +9,15 @@
 class TransitionNode
 {
 public:
+	TransitionNode(TransitionNode* p, QGraphicsScene* s, QColor c, int l, int cx, int ty);
 	TransitionNode();
 	~TransitionNode();
-	void paint();
-	QVector<TransitionNode>* getChildren() const;
+	void paintBar();
+	QVector<TransitionNode*>* getChildren() const;
+	void addChild(TransitionNode* t);
 
 protected:
-	QVector<TransitionNode>* children;
+	QVector<TransitionNode*>* children;
 
 private:
 	TransitionNode* parent;

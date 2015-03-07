@@ -6,9 +6,10 @@
 class TransitionTree
 {
 public:
-	TransitionTree();
+	TransitionTree(TransitionNode*, QGraphicsScene*);
 	~TransitionTree();
 	void display();
+	void addNode(TransitionNode* t);
 
 private:
 	TransitionNode* root;
