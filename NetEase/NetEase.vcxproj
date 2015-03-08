@@ -76,6 +76,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ClusterAll.cpp" />
+    <ClCompile Include="ClusterItem.cpp" />
+    <ClCompile Include="ClusterSet.cpp" />
+    <ClCompile Include="Control.cpp" />
     <ClCompile Include="GeneratedFiles\Debug\moc_NetEase.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -89,9 +93,10 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MainView.cpp" />
+    <ClCompile Include="Model.cpp" />
     <ClCompile Include="NetEase.cpp" />
-    <ClCompile Include="TransitionTree.cpp" />
-    <ClCompile Include="TransitionNode.cpp" />
+    <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="NetEase.h">
@@ -118,9 +123,14 @@
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ClusterAll.h" />
+    <ClInclude Include="ClusterItem.h" />
+    <ClInclude Include="ClusterSet.h" />
+    <ClInclude Include="Control.h" />
     <ClInclude Include="GeneratedFiles\ui_NetEase.h" />
-    <ClInclude Include="TransitionTree.h" />
-    <ClInclude Include="TransitionNode.h" />
+    <ClInclude Include="MainView.h" />
+    <ClInclude Include="Model.h" />
+    <ClInclude Include="Player.h" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="NetEase.qrc">

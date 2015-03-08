@@ -1,14 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;cxx;c;def</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h</Extensions>
-    </Filter>
     <Filter Include="Form Files">
       <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
       <Extensions>ui</Extensions>
@@ -33,14 +25,17 @@
       <Extensions>cpp;moc</Extensions>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
+    <Filter Include="view">
+      <UniqueIdentifier>{09bec3ab-e0a8-4ce7-9771-422225228892}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="model">
+      <UniqueIdentifier>{3e0bdb84-5eaa-4d96-85f0-0ac447f162e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="control">
+      <UniqueIdentifier>{6a2891cc-a295-403f-8c98-b85b2e60e20d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="NetEase.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_NetEase.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
@@ -50,33 +45,63 @@
     <ClCompile Include="GeneratedFiles\qrc_NetEase.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
-    <ClCompile Include="TransitionNode.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="MainView.cpp">
+      <Filter>view</Filter>
     </ClCompile>
-    <ClCompile Include="TransitionTree.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="NetEase.cpp" />
+    <ClCompile Include="Player.cpp">
+      <Filter>model</Filter>
+    </ClCompile>
+    <ClCompile Include="ClusterItem.cpp">
+      <Filter>model</Filter>
+    </ClCompile>
+    <ClCompile Include="ClusterSet.cpp">
+      <Filter>model</Filter>
+    </ClCompile>
+    <ClCompile Include="ClusterAll.cpp">
+      <Filter>model</Filter>
+    </ClCompile>
+    <ClCompile Include="Model.cpp">
+      <Filter>model</Filter>
+    </ClCompile>
+    <ClCompile Include="Control.cpp">
+      <Filter>control</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="NetEase.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
     <CustomBuild Include="NetEase.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
     <CustomBuild Include="NetEase.qrc">
       <Filter>Resource Files</Filter>
     </CustomBuild>
+    <CustomBuild Include="NetEase.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_NetEase.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
-    <ClInclude Include="TransitionNode.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="MainView.h">
+      <Filter>view</Filter>
     </ClInclude>
-    <ClInclude Include="TransitionTree.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Player.h">
+      <Filter>model</Filter>
+    </ClInclude>
+    <ClInclude Include="ClusterItem.h">
+      <Filter>model</Filter>
+    </ClInclude>
+    <ClInclude Include="ClusterSet.h">
+      <Filter>model</Filter>
+    </ClInclude>
+    <ClInclude Include="ClusterAll.h">
+      <Filter>model</Filter>
+    </ClInclude>
+    <ClInclude Include="Model.h">
+      <Filter>model</Filter>
+    </ClInclude>
+    <ClInclude Include="Control.h">
+      <Filter>control</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

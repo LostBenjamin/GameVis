@@ -4,7 +4,6 @@
 #include <QtWidgets/QGraphicsView>
 #include <QtWidgets/QGraphicsScene>
 #include "ui_NetEase.h"
-#include "TransitionTree.h"
 
 class NetEase : public QMainWindow
 {
@@ -20,6 +19,5 @@ private:
 	Ui::NetEaseClass ui;
 	QGraphicsScene* scene;
 	QGraphicsView* view;
-	TransitionTree* transitionTree;
 
 };
