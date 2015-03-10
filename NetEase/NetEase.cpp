@@ -1,28 +1,28 @@
 #include "NetEase.h"
 
-NetEase::NetEase(QWidget *parent):
-	QMainWindow(parent), 
-	scene(new QGraphicsScene(this)), 
-	view(new QGraphicsView(scene, this))
+NetEase::NetEase(QWidget *parent) :
+	QMainWindow(parent),
+	model(0)
 {
 	ui.setupUi(this);
-	setCentralWidget(view);
-	resize(1200, 800);
-
-	initScene();
+	resize(WINDOW_WIDTH, WINDOW_HEIGHT);
+	//QDesktopWidget* desktop = QApplication::desktop();
+	//move((desktop->width() - this->width()) / 2, (desktop->height() - this->height()) / 2);
+	mainView = new MainView(this);
+	setCentralWidget(mainView);
 }
 
 NetEase::~NetEase()
 {
-
+	delete mainView;
 }
 
-void NetEase::initScene()
+void NetEase::setModel(Model *_model)
 {
-	scene->setSceneRect(-500, -300, 1000, 600);
-	QBrush redBrush(Qt::red);
-	QPen blackPen(Qt::black);
-	QBrush grayBrush(QColor(0xEE, 0xEE, 0xEE));
-	QPen grayPen(QColor(0xEE, 0xEE, 0xEE));
-	QGraphicsRectItem* rect = scene->addRect(-500, -300, 1000, 600, grayPen, grayBrush);
+	model = _model;
+}
+
+void NetEase::paintMainView(void)
+{
+	mainView->paint(model->getClusterAll());
 }

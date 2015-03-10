@@ -31,17 +31,11 @@
     <Filter Include="model">
       <UniqueIdentifier>{3e0bdb84-5eaa-4d96-85f0-0ac447f162e5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="control">
+    <Filter Include="controller">
       <UniqueIdentifier>{6a2891cc-a295-403f-8c98-b85b2e60e20d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="GeneratedFiles\Debug\moc_NetEase.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_NetEase.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
     <ClCompile Include="GeneratedFiles\qrc_NetEase.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
@@ -49,7 +43,6 @@
       <Filter>view</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="NetEase.cpp" />
     <ClCompile Include="Player.cpp">
       <Filter>model</Filter>
     </ClCompile>
@@ -65,8 +58,23 @@
     <ClCompile Include="Model.cpp">
       <Filter>model</Filter>
     </ClCompile>
-    <ClCompile Include="Control.cpp">
-      <Filter>control</Filter>
+    <ClCompile Include="Controller.cpp">
+      <Filter>controller</Filter>
+    </ClCompile>
+    <ClCompile Include="NetEase.cpp">
+      <Filter>view</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_NetEase.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_NetEase.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_MainView.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_MainView.cpp">
+      <Filter>Generated Files\Release</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -76,14 +84,19 @@
     <CustomBuild Include="NetEase.qrc">
       <Filter>Resource Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="NetEase.h" />
+    <CustomBuild Include="NetEase.h">
+      <Filter>view</Filter>
+    </CustomBuild>
+    <CustomBuild Include="MainView.h">
+      <Filter>view</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Model.h">
+      <Filter>model</Filter>
+    </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_NetEase.h">
       <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MainView.h">
-      <Filter>view</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>model</Filter>
@@ -97,11 +110,9 @@
     <ClInclude Include="ClusterAll.h">
       <Filter>model</Filter>
     </ClInclude>
-    <ClInclude Include="Model.h">
-      <Filter>model</Filter>
-    </ClInclude>
-    <ClInclude Include="Control.h">
-      <Filter>control</Filter>
+    <ClInclude Include="constant.h" />
+    <ClInclude Include="Controller.h">
+      <Filter>controller</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

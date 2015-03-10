@@ -1,9 +1,13 @@
 #pragma once
 
 #include <QtWidgets/QMainWindow>
-#include <QtWidgets/QGraphicsView>
-#include <QtWidgets/QGraphicsScene>
+#include <QtWidgets/QDesktopWidget>
+#include <QtWidgets/QHBoxLayout>
+#include <QtWidgets/QPushButton>
 #include "ui_NetEase.h"
+#include "constant.h"
+#include "MainView.h"
+#include "Model.h"
 
 class NetEase : public QMainWindow
 {
@@ -12,12 +16,12 @@ class NetEase : public QMainWindow
 public:
 	NetEase(QWidget *parent = 0);
 	~NetEase();
-	void initScene();
-	void initSceneBackground();
+	void setModel(Model *_model);
+	void paintMainView(void);
 
 private:
 	Ui::NetEaseClass ui;
-	QGraphicsScene* scene;
-	QGraphicsView* view;
+	Model *model;
+	MainView *mainView;
 
 };
