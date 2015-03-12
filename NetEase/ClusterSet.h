@@ -1,5 +1,5 @@
 #pragma once
-#include <boost/numeric/ublas/matrix.hpp>
+//#include <boost/numeric/ublas/matrix.hpp>
 #include "ClusterItem.h"
 #include "QtCore/QVector"
 #include "constant.h"
@@ -11,8 +11,13 @@ public:
 	QVector<ClusterItem>& getClusterItems();
 	void push_back(ClusterItem& c);
 	void setMatrixElement(int i, int j, double value);
+	int getCount();
+	double getTotalRecords();
+	ClusterItem* itemsAtIndex(int i);
 private:
 	QVector<ClusterItem> clusterItems;
-	boost::numeric::ublas::matrix<double> transitionMatrix;
+	double _totalRecords;
+
+//	boost::numeric::ublas::matrix<double> transitionMatrix;
 };
 

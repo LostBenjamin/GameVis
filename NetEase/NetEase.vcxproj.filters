@@ -25,14 +25,14 @@
       <Extensions>cpp;moc</Extensions>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
-    <Filter Include="view">
-      <UniqueIdentifier>{09bec3ab-e0a8-4ce7-9771-422225228892}</UniqueIdentifier>
-    </Filter>
     <Filter Include="model">
       <UniqueIdentifier>{3e0bdb84-5eaa-4d96-85f0-0ac447f162e5}</UniqueIdentifier>
     </Filter>
     <Filter Include="controller">
       <UniqueIdentifier>{6a2891cc-a295-403f-8c98-b85b2e60e20d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="view">
+      <UniqueIdentifier>{09bec3ab-e0a8-4ce7-9771-422225228892}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -63,18 +63,6 @@
     </ClCompile>
     <ClCompile Include="NetEase.cpp">
       <Filter>view</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_NetEase.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_NetEase.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_MainView.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_MainView.cpp">
-      <Filter>Generated Files\Release</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

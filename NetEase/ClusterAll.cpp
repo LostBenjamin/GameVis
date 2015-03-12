@@ -3,6 +3,7 @@
 
 ClusterAll::ClusterAll()
 {
+
 }
 
 
@@ -17,5 +18,10 @@ QVector<ClusterSet>& ClusterAll::getClusterSets()
 
 void ClusterAll::push_back(ClusterSet& c)
 {
+
 	clusterSets.push_back(c);
+}
+
+ClusterSet * ClusterAll::getLastElement(){
+	return &clusterSets.last();
 }

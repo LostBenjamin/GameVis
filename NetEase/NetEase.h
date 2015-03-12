@@ -11,17 +11,14 @@
 
 class NetEase : public QMainWindow
 {
-	Q_OBJECT
-
+	//Q_OBJECT
 public:
 	NetEase(QWidget *parent = 0);
 	~NetEase();
 	void setModel(Model *_model);
 	void paintMainView(void);
-
 private:
 	Ui::NetEaseClass ui;
 	Model *model;
 	MainView *mainView;
-
 };
