@@ -49,7 +49,9 @@ void Player::loadTestData(ClusterAll* clusterAll)
 				double totalCountRecord = 0;
 				for (int k = 0; k < lastClusterSet->getCount(); k++){
 					ClusterItem *item=lastClusterSet->itemsAtIndex(k);
-					totalCountRecord += item->getCountRecord()*item->getTransition()[j];
+					double sourceCount = item->getCountRecord()*item->getTransition()[j];
+					clusterItem->pushSource(sourceCount);
+					totalCountRecord += sourceCount;
 				}
 				clusterItem->setCountRecord(totalCountRecord);
 			}

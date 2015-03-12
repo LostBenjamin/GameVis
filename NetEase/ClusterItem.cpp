@@ -3,7 +3,7 @@
 
 ClusterItem::ClusterItem()
 {
-	_totalRecord = 0;
+	_countTrans = 0;
 }
 
 
@@ -16,9 +16,17 @@ ClusterItem::~ClusterItem()
 
 void ClusterItem::push_back(double d)
 {
-	_totalRecord += d;
+	_countTrans += d;
 	transition.push_back(d);
 }
+
+void ClusterItem::pushSource(double sourceComponent)
+{
+
+	_source.push_back(sourceComponent);
+}
+
+
 
 QVector<double>& ClusterItem::getTransition()
 {
@@ -29,19 +37,25 @@ QVector<double>& ClusterItem::getTransition()
 double ClusterItem::getCountRecord(){
 	return _countRecord;
 }
+double ClusterItem::getCountTrans(){
+	return _countTrans;
+}
+double ClusterItem::getSourceAtIndex(int id){
+	return _source[id];
+}
 void ClusterItem::setCountRecord(double countRecord){
 	normalize();
 	_countRecord = countRecord;
 }
 void ClusterItem::normalize(){
 
-	for (int i = 0; i < transition.count()&&_totalRecord!=0; i++)
+	for (int i = 0; i < transition.count()&&_countTrans!=0; i++)
 	{
-		transition[i] = transition[i] / _totalRecord;
+		transition[i] = transition[i] / _countTrans;
 	}
-	if (_totalRecord!=0)
+	if (_countTrans!=0)
 	{
-		_totalRecord = 1;
+		_countTrans = 1;
 	}
 	
 }
