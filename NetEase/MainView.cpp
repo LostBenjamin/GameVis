@@ -1,16 +1,22 @@
 #include "MainView.h"
 #include <QPolygonF>
+#include <QHBoxLayout>
 
 MainView::MainView(QWidget* parent) :
 	scene(new QGraphicsScene(this)),
 	view(new QGraphicsView(scene, this))
 {
-	resize(MAINVIEW_WIDTH, MAINVIEW_HEIGHT);
+	QHBoxLayout *layout = new QHBoxLayout(this);
+	layout->addWidget(view);
+	this->setLayout(layout);
+
+	//resize(MAINVIEW_WIDTH, MAINVIEW_HEIGHT);
 	scene->setSceneRect(-1 * (MAINVIEW_WIDTH >> 1), -1 * (MAINVIEW_HEIGHT >> 1), MAINVIEW_WIDTH, MAINVIEW_HEIGHT);
 	int t = 0xff;
 	QBrush grayBrush(QColor(t, t, t));
 	QPen grayPen(QColor(t, t, t));
 	QGraphicsRectItem* rect = scene->addRect(-1 * (MAINVIEW_WIDTH >> 1), -1 * (MAINVIEW_HEIGHT >> 1), MAINVIEW_WIDTH, MAINVIEW_HEIGHT, grayPen, grayBrush);
+
 }
 
 
