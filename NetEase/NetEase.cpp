@@ -8,13 +8,13 @@ NetEase::NetEase(QWidget *parent) :
 	//resize(WINDOW_WIDTH, WINDOW_HEIGHT);
 	//QDesktopWidget* desktop = QApplication::desktop();
 	//move((desktop->width() - this->width()) / 2, (desktop->height() - this->height()) / 2);
-	mainView = new MainView(this);
-	setCentralWidget(mainView);
+	myCentralWidget = new MyCentralWidget(this);
+	setCentralWidget(myCentralWidget);
 }
 
 NetEase::~NetEase()
 {
-	delete mainView;
+	delete myCentralWidget;
 }
 
 void NetEase::setModel(Model *_model)
@@ -24,5 +24,5 @@ void NetEase::setModel(Model *_model)
 
 void NetEase::paintMainView(void)
 {
-	mainView->paint(model->getClusterAll());
+	myCentralWidget->paintMainView(model->getClusterAll());
 }

@@ -2,16 +2,16 @@
 #include <QPolygonF>
 #include <QHBoxLayout>
 
-MainView::MainView(QWidget* parent) :
-	scene(new QGraphicsScene(this)),
-	view(new QGraphicsView(scene, this))
+MainView::MainView(QGraphicsScene* _scene, QWidget* parent) :
+	scene(_scene),
+	QGraphicsView(_scene)
 {
-	QHBoxLayout *layout = new QHBoxLayout(this);
-	layout->addWidget(view);
-	this->setLayout(layout);
+	//QHBoxLayout *layout = new QHBoxLayout(this);
+	//layout->addWidget(view);
+	//this->setLayout(layout);
 
 	//resize(MAINVIEW_WIDTH, MAINVIEW_HEIGHT);
-	scene->setSceneRect(-1 * (MAINVIEW_WIDTH >> 1), -1 * (MAINVIEW_HEIGHT >> 1), MAINVIEW_WIDTH, MAINVIEW_HEIGHT);
+	//scene->setSceneRect(-1 * (MAINVIEW_WIDTH >> 1), -1 * (MAINVIEW_HEIGHT >> 1), MAINVIEW_WIDTH, MAINVIEW_HEIGHT);
 	int t = 0xff;
 	QBrush grayBrush(QColor(t, t, t));
 	QPen grayPen(QColor(t, t, t));
@@ -45,8 +45,6 @@ void MainView::paint(ClusterAll* clusterAll)
 			QVector<double> transition = clusterItems[j].getTransition();
 			//double currentHeight = clusterItems[j].getCountRecord() / clusterSets[i].getTotalRecords() * totalHeigh;
 			double currentHeight = clusterItems[j].getCountRecord() / clusterSets[i].getCount() * totalHeigh;
-
-
 
 			double distancePosY = 3;
 			scene->addRect(-1 * (MAINVIEW_WIDTH >> 1) + i*distanceWidth + 20, -1 * (MAINVIEW_HEIGHT >> 1) + currentPosY, 5, currentHeight, p, b);
@@ -89,7 +87,7 @@ void MainView::paint(ClusterAll* clusterAll)
 					QPen p(QColor(0xff, 0xff, 0));
 					scene->addPolygon(polygon << QPointF(sourcePolygonX, sourcePolygonY) << QPointF(sourcePolygonX, sourcePolygonY + sourcePolygonH) << QPointF(targetPolygonX, targetPolygonY + targetPolygonH) << QPointF(targetPolygonX, targetPolygonY), p, b);
 
-					scene->addLine(-1 * (MAINVIEW_WIDTH >> 1) + i*distanceWidth + 20, -1 * (MAINVIEW_HEIGHT >> 1) + currentPosY + currentHeight / 2, -1 * (MAINVIEW_WIDTH >> 1) + (i + 1)*distanceWidth + 20 + 3, -1 * (MAINVIEW_HEIGHT >> 1) + distancePosY + distanceHeight / 2);
+					//scene->addLine(-1 * (MAINVIEW_WIDTH >> 1) + i*distanceWidth + 20, -1 * (MAINVIEW_HEIGHT >> 1) + currentPosY + currentHeight / 2, -1 * (MAINVIEW_WIDTH >> 1) + (i + 1)*distanceWidth + 20 + 3, -1 * (MAINVIEW_HEIGHT >> 1) + distancePosY + distanceHeight / 2);
 					
 				}
 				distancePosY += distanceHeight + 5;

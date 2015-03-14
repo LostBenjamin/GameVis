@@ -8,6 +8,7 @@
 #include "constant.h"
 #include "MainView.h"
 #include "Model.h"
+#include "MyCentralWidget.h"
 
 class NetEase : public QMainWindow
 {
@@ -20,5 +21,5 @@ public:
 private:
 	Ui::NetEaseClass ui;
 	Model *model;
-	MainView *mainView;
+	MyCentralWidget *myCentralWidget;
 };

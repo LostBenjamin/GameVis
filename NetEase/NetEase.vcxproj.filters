@@ -64,6 +64,15 @@
     <ClCompile Include="NetEase.cpp">
       <Filter>view</Filter>
     </ClCompile>
+    <ClCompile Include="MyCentralWidget.cpp">
+      <Filter>view</Filter>
+    </ClCompile>
+    <ClCompile Include="ToolBar.cpp">
+      <Filter>view</Filter>
+    </ClCompile>
+    <ClCompile Include="InfoList.cpp">
+      <Filter>view</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="NetEase.ui">
@@ -101,6 +110,15 @@
     <ClInclude Include="constant.h" />
     <ClInclude Include="Controller.h">
       <Filter>controller</Filter>
+    </ClInclude>
+    <ClInclude Include="MyCentralWidget.h">
+      <Filter>view</Filter>
+    </ClInclude>
+    <ClInclude Include="ToolBar.h">
+      <Filter>view</Filter>
+    </ClInclude>
+    <ClInclude Include="InfoList.h">
+      <Filter>view</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
