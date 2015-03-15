@@ -73,6 +73,9 @@
     <ClCompile Include="InfoList.cpp">
       <Filter>view</Filter>
     </ClCompile>
+    <ClCompile Include="StatusBar.cpp">
+      <Filter>view</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="NetEase.ui">
@@ -118,6 +121,9 @@
       <Filter>view</Filter>
     </ClInclude>
     <ClInclude Include="InfoList.h">
+      <Filter>view</Filter>
+    </ClInclude>
+    <ClInclude Include="StatusBar.h">
       <Filter>view</Filter>
     </ClInclude>
   </ItemGroup>

@@ -9,6 +9,7 @@
 #include "MainView.h"
 #include "Model.h"
 #include "MyCentralWidget.h"
+#include "StatusBar.h"
 
 class NetEase : public QMainWindow
 {
@@ -22,4 +23,5 @@ private:
 	Ui::NetEaseClass ui;
 	Model *model;
 	MyCentralWidget *myCentralWidget;
+	StatusBar *statusBar;
 };

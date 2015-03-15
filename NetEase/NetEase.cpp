@@ -9,7 +9,9 @@ NetEase::NetEase(QWidget *parent) :
 	//QDesktopWidget* desktop = QApplication::desktop();
 	//move((desktop->width() - this->width()) / 2, (desktop->height() - this->height()) / 2);
 	myCentralWidget = new MyCentralWidget(this);
+	statusBar = new StatusBar();
 	setCentralWidget(myCentralWidget);
+	setStatusBar(statusBar);
 }
 
 NetEase::~NetEase()

@@ -225,6 +225,7 @@
     <ClCompile Include="MyCentralWidget.cpp" />
     <ClCompile Include="NetEase.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="StatusBar.cpp" />
     <ClCompile Include="ToolBar.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -303,6 +304,7 @@
     <ClInclude Include="Controller.h" />
     <ClInclude Include="GeneratedFiles\ui_NetEase.h" />
     <ClInclude Include="InfoList.h" />
+    <ClInclude Include="StatusBar.h" />
     <ClInclude Include="ToolBar.h" />
     <CustomBuild Include="MainView.h">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
