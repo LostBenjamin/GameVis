@@ -15,7 +15,7 @@ public:
 	void normalize();
 private:
 	QVector<double> transition;
-	//来源分量
+	//来源分量注意 要获得第i个到底有多少需要用i-（i-1） 第0个为第0个的值
 	QVector<double> _source;
 
 	int _id;

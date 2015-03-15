@@ -24,5 +24,6 @@ MyCentralWidget::~MyCentralWidget()
 
 void MyCentralWidget::paintMainView(ClusterAll* clusterAll)
 {
+	mainView->initViewWithData(clusterAll);
 	mainView->paint(clusterAll);
 }

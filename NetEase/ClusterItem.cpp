@@ -23,7 +23,16 @@ void ClusterItem::push_back(double d)
 void ClusterItem::pushSource(double sourceComponent)
 {
 
+	//if (_source.size()==0)
+	//{
+	//	_source.push_back(sourceComponent);
+	//}
+	//else _source.push_back(sourceComponent+_source.last());
+
+
+
 	_source.push_back(sourceComponent);
+
 }
 
 
