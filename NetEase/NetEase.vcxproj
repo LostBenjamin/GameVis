@@ -241,6 +241,8 @@
     <ClCompile Include="MainView.cpp" />
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="MyCentralWidget.cpp" />
+    <ClCompile Include="NEClassItem.cpp" />
+    <ClCompile Include="NEStripeItem.cpp" />
     <ClCompile Include="NetEase.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="StatusBar.cpp" />
@@ -322,6 +324,82 @@
     <ClInclude Include="Controller.h" />
     <ClInclude Include="GeneratedFiles\ui_NetEase.h" />
     <ClInclude Include="InfoList.h" />
+    <CustomBuild Include="NEClassItem.h">
+      <Message Condition="'$(Configuration)|$(Platform)'=='X64|x64'">
+      </Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='X64|x64'">
+      </Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='X64|x64'">
+      </Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='X64|Win32'">
+      </Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='X64|Win32'">
+      </Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='X64|Win32'">
+      </Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </Command>
+    </CustomBuild>
+    <CustomBuild Include="NEStripeItem.h">
+      <Message Condition="'$(Configuration)|$(Platform)'=='X64|x64'">
+      </Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='X64|x64'">
+      </Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='X64|x64'">
+      </Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='X64|Win32'">
+      </Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='X64|Win32'">
+      </Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='X64|Win32'">
+      </Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </Command>
+    </CustomBuild>
     <ClInclude Include="StatusBar.h" />
     <ClInclude Include="ToolBar.h" />
     <CustomBuild Include="MainView.h">

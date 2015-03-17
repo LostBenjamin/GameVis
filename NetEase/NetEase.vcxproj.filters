@@ -34,6 +34,14 @@
     <Filter Include="view">
       <UniqueIdentifier>{09bec3ab-e0a8-4ce7-9771-422225228892}</UniqueIdentifier>
     </Filter>
+    <Filter Include="view\SceneObject">
+      <UniqueIdentifier>{0735e418-d617-4d5b-b1e7-bf20611c9bf4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Generated Files\X64">
+      <UniqueIdentifier>{106450b8-2c88-4a5d-9146-f65c52e0b0fb}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GeneratedFiles\qrc_NetEase.cpp">
@@ -76,6 +84,21 @@
     <ClCompile Include="StatusBar.cpp">
       <Filter>view</Filter>
     </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_MainView.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_MainView.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\X64\moc_MainView.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="NEClassItem.cpp">
+      <Filter>view\SceneObject</Filter>
+    </ClCompile>
+    <ClCompile Include="NEStripeItem.cpp">
+      <Filter>view\SceneObject</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="NetEase.ui">
@@ -92,6 +115,12 @@
     </CustomBuild>
     <CustomBuild Include="Model.h">
       <Filter>model</Filter>
+    </CustomBuild>
+    <CustomBuild Include="NEClassItem.h">
+      <Filter>view\SceneObject</Filter>
+    </CustomBuild>
+    <CustomBuild Include="NEStripeItem.h">
+      <Filter>view\SceneObject</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>

@@ -12,6 +12,9 @@ NetEase::NetEase(QWidget *parent) :
 	statusBar = new StatusBar();
 	setCentralWidget(myCentralWidget);
 	setStatusBar(statusBar);
+	setMouseTracking(true);
+
+	bool a = hasMouseTracking();
 }
 
 NetEase::~NetEase()
