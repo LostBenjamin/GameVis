@@ -56,13 +56,13 @@ void MainView::resize(const QSize &)
 	update();
 }
 
-void MainView::repaint(){
-	
-	initItemWithData(clusterAll);
-	update();
-
-
-}
+//void MainView::repaint(){
+//	
+//	initItemWithData(clusterAll);
+//	update();
+//
+//
+//}
 
 
 
