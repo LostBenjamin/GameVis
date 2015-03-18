@@ -12,7 +12,7 @@ NEClassItem::NEClassItem()
 	setAcceptedMouseButtons(Qt::LeftButton);
 	setAcceptDrops(true);
 	setAcceptTouchEvents(true);
-	classId=0;
+	setTag(classId);
 }
 
 
@@ -20,18 +20,20 @@ NEClassItem::~NEClassItem()
 {
 }
 NEClassItem::NEClassItem(QRectF &frame, QPoint &id){
+	setTag(classId);
+
+
 	classFrame = frame;
 	itemId = id;
-	classId = 0;
 	//shape();
 }
 NEClassItem::NEClassItem(const NEClassItem &item){
+	setTag(classId);
 	classFrame = item.getClassFrame();
-	classId = 0;
 	itemId = item.getItemId();
-	classId = 0;
 }
 NEClassItem& NEClassItem::operator=(const NEClassItem &item){
+
 	classFrame = item.getClassFrame();
 
 	itemId = item.getItemId();
@@ -44,7 +46,8 @@ QPoint NEClassItem::getItemId()const{
 	return itemId;
 }
 void NEClassItem::changePos(QPoint pos){
-	classFrame = QRectF(pos,classFrame.size());
+	
+	classFrame = QRectF(QPoint(classFrame.topLeft().x() + pos.x(), classFrame.topLeft().y() + pos.y()), classFrame.size());
 	update();
 }
 
@@ -56,6 +59,11 @@ void NEClassItem::setClassFrame(QRectF frame)
 	classFrame = frame;
 	update();
 }
+
+int NEClassItem::getClassId()const{
+	return classId;
+}
+
 QRectF NEClassItem::boundingRect()const{
 	return QRectF(0, 0, classFrame.size().width()+10,classFrame.size().height()+10);
 

@@ -9,6 +9,18 @@
 #include "NEStripeItem.h"
 #include "NEClassItem.h"
 
+struct NEItemEvent
+{
+	int itemId;
+	QPointF lastPoint;
+	QPoint classItemIdx;
+	StripeId stripeItemIdx;
+
+
+};
+
+
+
 
 class MainView: public QGraphicsView
 {
@@ -29,9 +41,14 @@ private:
 	double scaling;
 	int timeSise;
 	int clusterSize;
-	QPointF dragItemId;
-	QPoint clickedClassItemId;
+	double classItemsWidth;
+	double classItemsInterval;
+
+	//QPointF dragItemId;
+	//QPoint clickedClassItemId;
 	ClusterAll* clusterAll;
+	NEItemEvent itemEventInfo;
+
 
 protected:
 	void mousePressEvent(QMouseEvent *event);

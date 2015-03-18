@@ -99,6 +99,9 @@
     <ClCompile Include="NEStripeItem.cpp">
       <Filter>view\SceneObject</Filter>
     </ClCompile>
+    <ClCompile Include="NEItem.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="NetEase.ui">
@@ -154,6 +157,9 @@
     </ClInclude>
     <ClInclude Include="StatusBar.h">
       <Filter>view</Filter>
+    </ClInclude>
+    <ClInclude Include="NEItem.h">
+      <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

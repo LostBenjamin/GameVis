@@ -10,10 +10,19 @@ MainView::MainView(QGraphicsScene* _scene, QWidget* parent) :
 	scaling = 0.2;
 	timeSise = 30;
 	clusterSize = 20;
+	classItemsWidth = 8;
+	classItemsInterval = 5;
+	itemEventInfo.itemId = -1;
+	itemEventInfo.lastPoint = QPointF(-1, -1);
+	itemEventInfo.classItemIdx = QPoint(-1, -1);
+	itemEventInfo.stripeItemIdx.x = -1; 
+	itemEventInfo.stripeItemIdx.y = -1;
+	itemEventInfo.stripeItemIdx.z = -1;
+
+
 	//setMouseTracking(true);
 	bool a=hasMouseTracking();
 
-	clickedClassItemId = QPoint(-1, -1);
 	//QHBoxLayout *layout = new QHBoxLayout(this);
 	//layout->addWidget(view);
 	//this->setLayout(layout);
@@ -52,7 +61,7 @@ void MainView::paint(ClusterAll* clusterAll_)
 {
 	
 	QVector<ClusterSet> clusterSets = clusterAll_->getClusterSets();
-
+	bool flag = true;
 	for (int i = 0; i != clusterSets.size(); i++)
 	{
 		QVector<ClusterItem> clusterItems = clusterSets[i].getClusterItems();
@@ -75,12 +84,13 @@ void MainView::paint(ClusterAll* clusterAll_)
 					continue;
 				}
 				stripesItem->setPos(stripesItem->getItemFrame().topLeft());
-				if (stripesItem->getItemFrame().topLeft().y() < 2)
-				{
-					k = k;
-				}
+				//if (flag&&transition[k]>0.6)
+				//{
+				//	flag = false;
+				//	scene->addItem(stripesItem);
+				//}
+				//
 				scene->addItem(stripesItem);
-
 			}
 		}
 
@@ -102,7 +112,7 @@ void MainView::initItemWithData(ClusterAll* clusterAll)
 	QVector<ClusterSet> clusterSets = clusterAll->getClusterSets();
 	
 	int distanceWidth = MAINVIEW_WIDTH / timeSise;
-	int totalHeigh = MAINVIEW_HEIGHT - 5 * clusterSize;
+	int totalHeigh = MAINVIEW_HEIGHT - classItemsInterval * clusterSize;
 
 	//int viewportX = -1 * (MAINVIEW_WIDTH >> 1);
 	//int viewportY = -1 * (MAINVIEW_HEIGHT >> 1);
@@ -113,7 +123,7 @@ void MainView::initItemWithData(ClusterAll* clusterAll)
 	for (int i = 0; i != clusterSets.size(); i++)
 	{
 		QVector<ClusterItem> clusterItems = clusterSets[i].getClusterItems();
-		double currentPosY = 3;
+		double currentPosY = classItemsInterval;
 		QVector<NEClassItem> classItemsForOneRow;
 		QVector<QVector<NEStripeItem>> stripesItemsForOneRow;
 		
@@ -125,7 +135,7 @@ void MainView::initItemWithData(ClusterAll* clusterAll)
 			//double currentHeight = clusterItems[j].getCountRecord() / clusterSets[i].getCount() * totalHeigh;
 
 			
-			QRectF classFrame(viewportX + i*distanceWidth + 20, viewportY + currentPosY, 5, currentHeight);
+			QRectF classFrame(viewportX + i*distanceWidth + 20, viewportY + currentPosY, classItemsWidth, currentHeight);
 			
 			NEClassItem classItem(classFrame,QPoint(i,j));
 			classItemsForOneRow.push_back(classItem);
@@ -133,7 +143,7 @@ void MainView::initItemWithData(ClusterAll* clusterAll)
 			QVector<NEStripeItem> stripesItems;
 			int tcount = 0;
 			double currentRelativePos = 0;
-			double distancePosY = 3;
+			double distancePosY = classItemsInterval;
 
 			for (int k = 0; k != transition.size() && i != clusterSets.size() - 1; k++)
 			{
@@ -143,7 +153,7 @@ void MainView::initItemWithData(ClusterAll* clusterAll)
 				double distanceHeight = distanceClusterItems[k].getCountRecord() / clusterSets[i + 1].getTotalRecords() * totalHeigh;
 				//	double distanceHeight = distanceClusterItems[k].getCountRecord() / clusterSets[i + 1].getCount() * totalHeigh;
 				double sourcePolygonH = transition[k] * currentHeight;
-				double sourcePolygonX = viewportX + i*distanceWidth + 20 + 5;
+				double sourcePolygonX = viewportX + i*distanceWidth + 20 + classItemsWidth;
 				double sourcePolygonY = viewportY + currentPosY + currentRelativePos;
 				currentRelativePos += sourcePolygonH;
 				double targetRelativePos = 0;
@@ -186,11 +196,11 @@ void MainView::initItemWithData(ClusterAll* clusterAll)
 					NEStripeItem stripesItem(transframe, scaling);
 					stripesItem.setStripeId(i, j, k);
 					stripesItems.push_back(stripesItem);
-					distancePosY += distanceHeight + 5;
+					distancePosY += distanceHeight + classItemsInterval;
 			}
 			
 			stripesItemsForOneRow.push_back(stripesItems);
-			currentPosY += currentHeight + 5;
+			currentPosY += currentHeight + classItemsInterval;
 		}
 		classItems.push_back(classItemsForOneRow);
 		stripesItems.push_back(stripesItemsForOneRow);
@@ -224,18 +234,47 @@ void MainView::initItemWithData(ClusterAll* clusterAll)
 
 void MainView::mousePressEvent(QMouseEvent *event)
 {
-	qDebug() <<QString("pos:%1,%2").arg(QString::number(event->x()),QString::number(event->y()));
+	//qDebug() << QString("pos:%1,%2").arg(QString::number(event->x()), QString::number(event->y()));
+	//QPoint clickPos = event->pos();
+	//QTransform transform;
+	////type_info info= typeid( scene->itemAt(clickPos, transform));
+	//NEItem* item = (NEItem*)scene->itemAt(clickPos, transform);
+
+	//if (item == nullptr)
+	//{
+	//	return;
+	//}
+	//if (item->getId() == 1)
+	//{
+	//	itemEventInfo.itemId = 1;
+	//	itemEventInfo.lastPoint = clickPos;
+	//	itemEventInfo.classItemIdx = ((NEClassItem *)item)->getItemId();
+	//}
+	//if (item->getId() == 0)
+	//{
+	//	itemEventInfo.itemId = 0;
+	//	itemEventInfo.lastPoint = clickPos;
+	//	itemEventInfo.stripeItemIdx = ((NEStripeItem *)item)->getStripeId();
+	//}
+	qDebug() << QString("pos:%1,%2").arg(QString::number(event->x()), QString::number(event->y()));
 	QPoint clickPos = event->pos();
 	QTransform transform;
 	//type_info info= typeid( scene->itemAt(clickPos, transform));
-	NEClassItem* cItem = (NEClassItem*)scene->itemAt(clickPos, transform);
-	NEStripeItem* sitem = (NEStripeItem*)scene->itemAt(clickPos, transform);
-	if (cItem==nullptr)
+	NEItem* item = (NEItem*)scene->itemAt(clickPos, transform);
+	int iii = item->getTag();
+	if (item->getTag() == 1)
 	{
-		return;
+		itemEventInfo.itemId = 1;
+		itemEventInfo.lastPoint = clickPos;
+		itemEventInfo.classItemIdx = ((NEClassItem *)item)->getItemId();
+	}
+	if (item->getTag() == 0)
+	{
+		itemEventInfo.itemId = 0;
+		itemEventInfo.lastPoint = clickPos;
+		itemEventInfo.stripeItemIdx = ((NEStripeItem *)item)->getStripeId();
 	}
 
-	clickedClassItemId = cItem->getItemId();
 
 }
 
@@ -243,18 +282,23 @@ void MainView::mousePressEvent(QMouseEvent *event)
 
 void MainView::mouseMoveEvent(QMouseEvent *event)
 {
-	if (clickedClassItemId == QPoint(-1, -1))
+	if (itemEventInfo.itemId==1)
 	{
-		return;
+	
+		if (itemEventInfo.classItemIdx == QPoint(-1, -1))
+		{
+			return;
+		}
+		QTransform transform;
+		NEClassItem* item = &classItems[itemEventInfo.classItemIdx.x()][itemEventInfo.classItemIdx.y()];
+		QPoint dPos = QPoint(event->pos().x() - itemEventInfo.lastPoint.x(), event->pos().y() - itemEventInfo.lastPoint.y());
+		item->changePos(dPos);
+
+		item->setPos(item->getClassFrame().topLeft());
+		itemEventInfo.lastPoint = event->pos();
+		itemEventInfo.classItemIdx = item->getItemId();
+		update();
 	}
-	classItems[clickedClassItemId.x()][clickedClassItemId.y()].changePos(event->pos());
-
-	QPoint clickPos = clickedClassItemId;
-	QTransform transform;
-	NEClassItem* item = &classItems[clickedClassItemId.x()][clickedClassItemId.y()];
-	item->setPos(event->pos());
-
-	//repaint();
 	
 }
 
@@ -262,5 +306,10 @@ void MainView::mouseMoveEvent(QMouseEvent *event)
 void MainView::mouseReleaseEvent(QMouseEvent *event)
 {
 	
-	clickedClassItemId = QPoint(-1, -1);
+	itemEventInfo.classItemIdx = QPoint(-1, -1);
+	itemEventInfo.stripeItemIdx.x = -1;
+	itemEventInfo.stripeItemIdx.y = -1;
+	itemEventInfo.stripeItemIdx.z = -1;
+
+
 }

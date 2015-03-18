@@ -6,7 +6,7 @@ NEStripeItem::NEStripeItem()
 	scaling = 0.5;
 	setStripeId(-1, -1, -1);
 	itemFrame = QRectF(0, 0, 0, 0);
-	classId = 1;
+	setTag(classId);
 }
 
 
@@ -14,12 +14,12 @@ NEStripeItem::NEStripeItem(TransFrame &frames, double scaling_, StripeId id){
 	setStripeFrame(frames);
 	setScaling(scaling_);
 	setStripeId(id);
-	classId = 1;
+	setTag(classId);
 }
 NEStripeItem::NEStripeItem(TransFrame &frames, double scaling_){
 	setStripeFrame(frames);
 	setScaling(scaling_);
-	classId = 1;
+	setTag(classId);
 }
 
 
@@ -52,14 +52,14 @@ NEStripeItem::NEStripeItem(const NEStripeItem &item){
 	setStripeFrame(item.getStripeFrame());
 	setStripeId(item.getStripeId());
 	setScaling(item.getScaling());
-	classId = 1;
+	setTag(classId);
 }
 
 NEStripeItem::NEStripeItem(TransFrame &frames){
 	scaling = 0.5;
 	setStripeFrame(frames);
 	setStripeId(-1, -1, -1);
-	classId = 1;
+	setTag(classId);
 }
 
 NEStripeItem::~NEStripeItem()
@@ -83,6 +83,12 @@ TransFrame NEStripeItem::getStripeFrame()const{
 double NEStripeItem::getScaling()const{
 
 	return scaling;
+
+}
+
+int NEStripeItem::getClassId()const{
+
+	return classId;
 
 }
 
@@ -145,10 +151,10 @@ void NEStripeItem::setStripeFrame(TransFrame frames){
 	stripeFrame = frames;
 
 
-	qreal ymin = stripeFrame.targetPos.y() > stripeFrame.sourcePos.y() ? stripeFrame.sourcePos.y() : stripeFrame.targetPos.y();
-	qreal ymax = stripeFrame.targetPos.y() + stripeFrame.height > stripeFrame.sourcePos.y() + stripeFrame.height ? stripeFrame.targetPos.y() + stripeFrame.height : stripeFrame.sourcePos.y() + stripeFrame.height;
-	qreal xmin = stripeFrame.sourcePos.x();
-	qreal xmax = stripeFrame.targetPos.x();
+	double ymin = stripeFrame.targetPos.y() > stripeFrame.sourcePos.y() ? stripeFrame.sourcePos.y() : stripeFrame.targetPos.y();
+	double ymax = stripeFrame.targetPos.y() + stripeFrame.height > stripeFrame.sourcePos.y() + stripeFrame.height ? stripeFrame.targetPos.y() + stripeFrame.height : stripeFrame.sourcePos.y() + stripeFrame.height;
+	double xmin = stripeFrame.sourcePos.x();
+	double xmax = stripeFrame.targetPos.x();
 	itemFrame = QRectF(xmin, ymin, xmax - xmin, ymax - ymin);
 
 
@@ -169,17 +175,19 @@ void NEStripeItem::setStripeFrame(TransFrame frames){
 	double targetPolygonY = stripeFrame.targetPos.y()-ymin;
 	double targetPolygonH = stripeFrame.height;
 
-	QPoint sourceUp_pos(sourcePolygonX, sourcePolygonY);
-	QPoint sourceBottom_pos(sourcePolygonX, sourcePolygonY + sourcePolygonH);
-	QPoint midUp_pos((sourcePolygonX + targetPolygonX) / 2, (sourcePolygonY + targetPolygonY) / 2 + sourcePolygonH*(1 - scaling) / 2);
-	QPoint midBottom_pos((sourcePolygonX + targetPolygonX) / 2, (sourcePolygonY + targetPolygonY) / 2 + sourcePolygonH - sourcePolygonH*(1 - scaling) / 2);
-	QPoint targetUp_pos(targetPolygonX, targetPolygonY);
-	QPoint targetBottom_pos(targetPolygonX, targetPolygonY + targetPolygonH);
+	QPointF sourceUp_pos(sourcePolygonX, sourcePolygonY);
+	QPointF sourceBottom_pos(sourcePolygonX, sourcePolygonY + sourcePolygonH);
+	QPointF midUp_pos((sourcePolygonX + targetPolygonX) / 2, (sourcePolygonY + targetPolygonY) / 2 + sourcePolygonH*(1 - scaling) / 2);
+	QPointF midBottom_pos((sourcePolygonX + targetPolygonX) / 2, (sourcePolygonY + targetPolygonY) / 2 + sourcePolygonH - sourcePolygonH*(1 - scaling) / 2);
+	QPointF targetUp_pos(targetPolygonX, targetPolygonY);
+	QPointF targetBottom_pos(targetPolygonX, targetPolygonY + targetPolygonH);
+	QPainterPath path(sourceUp_pos);
 
-	painterPath.moveTo(sourceUp_pos);
-	painterPath.cubicTo(midUp_pos, midUp_pos, targetUp_pos);
-	painterPath.lineTo(targetBottom_pos);
-	painterPath.cubicTo(midBottom_pos, midBottom_pos, sourceBottom_pos);
-	painterPath.lineTo(sourceUp_pos);
+	path.moveTo(sourceUp_pos);
+	path.cubicTo(midUp_pos, midUp_pos, targetUp_pos);
+	path.lineTo(targetBottom_pos);
+	path.cubicTo(midBottom_pos, midBottom_pos, sourceBottom_pos);
+	path.lineTo(sourceUp_pos);
+	painterPath = path;
 	update();
 }

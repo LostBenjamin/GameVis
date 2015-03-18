@@ -3,6 +3,7 @@
 #include <QPainter>  
 #include <QRectF>  
 #include <QPainterPath>  
+#include "NEItem.h"
 
 
 
@@ -22,7 +23,7 @@ struct StripeId
 };
 
 
-class NEStripeItem : public QGraphicsItem
+class NEStripeItem : public NEItem
 {
 	//Q_OBJECT
 	Q_PROPERTY(QPointF pos READ pos WRITE setPos)
@@ -35,6 +36,9 @@ public:
 	~NEStripeItem();
 	NEStripeItem& operator=(const NEStripeItem &item);
 
+	virtual int getId() {
+		return 0;
+	}
 
 
 	void setStripeFrame(TransFrame frames);
@@ -43,6 +47,7 @@ public:
 	QPainterPath shape()const;
 	TransFrame getStripeFrame()const;
 	double getScaling()const;
+	int getClassId()const;
 	void setScaling(double scaling);
 	void setStripeId(StripeId id);
 	void setStripeId(int x,int y,int z);
@@ -59,6 +64,6 @@ private:
 	//stripeId[3]={timeId,classId,stripeId}
 	StripeId stripeId;
 	double scaling;
-	int classId;
+	int classId=0;
 };
 
