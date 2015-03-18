@@ -4,7 +4,7 @@
 #include <QPainterPath>  
 #include "qobject.h"
 #include "NEItem.h"
-
+#include <qcolor>
 
 
 
@@ -24,7 +24,7 @@ public:
 	}
 
 	QRectF getClassFrame()const;
-	void changePos(QPoint pos);
+	void changePos(QSize offset);
 
 	void setClassFrame(QRectF frame);
 	QRectF boundingRect()const;
@@ -32,6 +32,10 @@ public:
 	QPainterPath shape()const;
 	QPoint getItemId()const;
 	int getClassId()const;
+
+	QColor getColor()const;
+	void setColor(QColor color);
+
 
 protected:
 	void mousePressEvent(QGraphicsSceneMouseEvent *event) Q_DECL_OVERRIDE;
@@ -43,6 +47,8 @@ protected:
 private:
 	QRectF classFrame;
 	QPoint itemId;
+	QColor itemColor;
+
 	int classId=1;
 };
 

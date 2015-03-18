@@ -4,7 +4,7 @@
 #include <QRectF>  
 #include <QPainterPath>  
 #include "NEItem.h"
-
+#include <QColor>
 
 
 struct TransFrame
@@ -41,19 +41,27 @@ public:
 	}
 
 
-	void setStripeFrame(TransFrame frames);
 	QRectF boundingRect()const Q_DECL_OVERRIDE;
 	void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) ;
 	QPainterPath shape()const;
+
+	void setStripeFrame(TransFrame frames);
 	TransFrame getStripeFrame()const;
+
 	double getScaling()const;
-	int getClassId()const;
 	void setScaling(double scaling);
+
+	QColor getItemColor()const;
+	void setItemColor(QColor color);
+
 	void setStripeId(StripeId id);
 	void setStripeId(int x,int y,int z);
 	StripeId getStripeId()const;	
-	QRectF getItemFrame()const;
 
+	int getClassId()const;
+	QRectF getItemFrame()const;
+	void changeSourcePos(QSize offset);
+	void changeTargetPos(QSize offset);
 
 
 private:
@@ -61,6 +69,10 @@ private:
 	TransFrame stripeFrame;
 	QPainterPath painterPath;
 	QRectF itemFrame;
+	QColor itemColor;
+
+
+
 	//stripeId[3]={timeId,classId,stripeId}
 	StripeId stripeId;
 	double scaling;

@@ -203,6 +203,7 @@
     <ClCompile Include="ClusterAll.cpp" />
     <ClCompile Include="ClusterItem.cpp" />
     <ClCompile Include="ClusterSet.cpp" />
+    <ClCompile Include="ColorSet.cpp" />
     <ClCompile Include="Controller.cpp" />
     <ClCompile Include="GeneratedFiles\Debug\moc_MainView.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='X64|Win32'">true</ExcludedFromBuild>
@@ -321,6 +322,7 @@
     <ClInclude Include="ClusterAll.h" />
     <ClInclude Include="ClusterItem.h" />
     <ClInclude Include="ClusterSet.h" />
+    <ClInclude Include="ColorSet.h" />
     <ClInclude Include="constant.h" />
     <ClInclude Include="Controller.h" />
     <ClInclude Include="GeneratedFiles\ui_NetEase.h" />

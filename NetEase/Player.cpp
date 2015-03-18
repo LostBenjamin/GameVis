@@ -16,7 +16,7 @@ void Player::loadTestData(ClusterAll* clusterAll)
 	for (int i = 0; i < TIME_SIZE; i++)
 	{
 		std::string s = std::to_string(i);
-		std::ifstream in("new/result"+ s);
+		std::ifstream in("data/TransferMatrix/result"+ s);
 		ClusterSet* clusterSet = new ClusterSet;
 		for (int j = 0; j < CLUSTER_SIZE; j++)
 		{

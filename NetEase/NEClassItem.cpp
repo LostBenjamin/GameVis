@@ -13,6 +13,7 @@ NEClassItem::NEClassItem()
 	setAcceptDrops(true);
 	setAcceptTouchEvents(true);
 	setTag(classId);
+	itemColor.setNamedColor("#ffff00");
 }
 
 
@@ -23,16 +24,21 @@ NEClassItem::NEClassItem(QRectF &frame, QPoint &id){
 	setTag(classId);
 
 
+	itemColor.setNamedColor("#ffff00");
 	classFrame = frame;
 	itemId = id;
 	//shape();
 }
 NEClassItem::NEClassItem(const NEClassItem &item){
+
+	itemColor = item.getColor();
 	setTag(classId);
 	classFrame = item.getClassFrame();
 	itemId = item.getItemId();
 }
 NEClassItem& NEClassItem::operator=(const NEClassItem &item){
+
+	itemColor.setNamedColor("#ffff00");
 
 	classFrame = item.getClassFrame();
 
@@ -45,12 +51,25 @@ QRectF NEClassItem::getClassFrame()const{
 QPoint NEClassItem::getItemId()const{
 	return itemId;
 }
-void NEClassItem::changePos(QPoint pos){
+void NEClassItem::changePos(QSize offset){
 	
-	classFrame = QRectF(QPoint(classFrame.topLeft().x() + pos.x(), classFrame.topLeft().y() + pos.y()), classFrame.size());
+	classFrame = QRectF(QPoint(classFrame.topLeft().x() + offset.width(), classFrame.topLeft().y() + offset.height()), classFrame.size());
 	update();
 }
 
+
+void  NEClassItem::setColor(QColor color){
+	itemColor = color;
+	update();
+	
+}
+
+
+QColor  NEClassItem::getColor()const
+{
+	return itemColor;
+
+}
 
 
 
@@ -71,8 +90,8 @@ QRectF NEClassItem::boundingRect()const{
 void  NEClassItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget){
 	Q_UNUSED(option);
 	Q_UNUSED(widget);
-	QBrush brush_bar(QColor(0xff, 0, 0));
-	QPen pen_bar(QColor(0xff, 0, 0));
+	QBrush brush_bar(itemColor);
+	QPen pen_bar(itemColor);
 	painter->setPen(pen_bar);
 	painter->setBrush(brush_bar);
 	//painter->drawRect(classFrame);

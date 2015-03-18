@@ -8,7 +8,7 @@
 #include "constant.h"
 #include "NEStripeItem.h"
 #include "NEClassItem.h"
-
+#include "ColorSet.h"
 struct NEItemEvent
 {
 	int itemId;
@@ -48,6 +48,8 @@ private:
 	//QPoint clickedClassItemId;
 	ClusterAll* clusterAll;
 	NEItemEvent itemEventInfo;
+	QVector<QColor> colorSet;
+
 
 
 protected:

@@ -48,7 +48,7 @@ QRectF  NEStripeItem::getItemFrame()const{
 
 
 NEStripeItem::NEStripeItem(const NEStripeItem &item){
-
+	itemColor = item.getItemColor();
 	setStripeFrame(item.getStripeFrame());
 	setStripeId(item.getStripeId());
 	setScaling(item.getScaling());
@@ -100,6 +100,16 @@ void NEStripeItem::setScaling(double scaling_)
 }
 
 
+void NEStripeItem::changeSourcePos(QSize offset){
+	stripeFrame.sourcePos = QPoint(stripeFrame.sourcePos.x() + offset.width(), stripeFrame.sourcePos.y() + offset.height());
+	setStripeFrame(stripeFrame);
+}
+
+
+void NEStripeItem::changeTargetPos(QSize offset){
+	stripeFrame.targetPos = QPoint(stripeFrame.targetPos.x() + offset.width(), stripeFrame.targetPos.y() + offset.height());
+	setStripeFrame(stripeFrame);
+}
 
 
 
@@ -129,8 +139,8 @@ void  NEStripeItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *opt
 	Q_UNUSED(option);
 	Q_UNUSED(widget);
 
-	QBrush brush_trans(QColor(0xff, 0x88, 0));
-	QPen pen_trans(QColor(0xff, 0x88, 0));
+	QBrush brush_trans(itemColor);
+	QPen pen_trans(itemColor);
 
 	if (stripeFrame.isVisable)
 	{
@@ -153,8 +163,8 @@ void NEStripeItem::setStripeFrame(TransFrame frames){
 
 	double ymin = stripeFrame.targetPos.y() > stripeFrame.sourcePos.y() ? stripeFrame.sourcePos.y() : stripeFrame.targetPos.y();
 	double ymax = stripeFrame.targetPos.y() + stripeFrame.height > stripeFrame.sourcePos.y() + stripeFrame.height ? stripeFrame.targetPos.y() + stripeFrame.height : stripeFrame.sourcePos.y() + stripeFrame.height;
-	double xmin = stripeFrame.sourcePos.x();
-	double xmax = stripeFrame.targetPos.x();
+	double xmin = stripeFrame.sourcePos.x()<stripeFrame.targetPos.x() ? stripeFrame.sourcePos.x():stripeFrame.targetPos.x();
+	double xmax = stripeFrame.sourcePos.x()>stripeFrame.targetPos.x() ? stripeFrame.sourcePos.x() : stripeFrame.targetPos.x();
 	itemFrame = QRectF(xmin, ymin, xmax - xmin, ymax - ymin);
 
 
@@ -190,4 +200,15 @@ void NEStripeItem::setStripeFrame(TransFrame frames){
 	path.lineTo(sourceUp_pos);
 	painterPath = path;
 	update();
+}
+
+
+
+void NEStripeItem::setItemColor(QColor color){
+	itemColor = color;
+	update();
+}
+
+QColor NEStripeItem::getItemColor()const{
+	return itemColor;
 }

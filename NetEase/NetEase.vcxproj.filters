@@ -42,6 +42,9 @@
       <Extensions>cpp;moc</Extensions>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
+    <Filter Include="tool">
+      <UniqueIdentifier>{428b11b9-60f9-43eb-a791-a18a331cd476}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GeneratedFiles\qrc_NetEase.cpp">
@@ -99,8 +102,11 @@
     <ClCompile Include="NEStripeItem.cpp">
       <Filter>view\SceneObject</Filter>
     </ClCompile>
+    <ClCompile Include="ColorSet.cpp">
+      <Filter>tool</Filter>
+    </ClCompile>
     <ClCompile Include="NEItem.cpp">
-      <Filter>Generated Files</Filter>
+      <Filter>view\SceneObject</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -158,8 +164,11 @@
     <ClInclude Include="StatusBar.h">
       <Filter>view</Filter>
     </ClInclude>
+    <ClInclude Include="ColorSet.h">
+      <Filter>tool</Filter>
+    </ClInclude>
     <ClInclude Include="NEItem.h">
-      <Filter>Generated Files</Filter>
+      <Filter>view\SceneObject</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

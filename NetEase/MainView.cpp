@@ -18,8 +18,9 @@ MainView::MainView(QGraphicsScene* _scene, QWidget* parent) :
 	itemEventInfo.stripeItemIdx.x = -1; 
 	itemEventInfo.stripeItemIdx.y = -1;
 	itemEventInfo.stripeItemIdx.z = -1;
-
-
+	ColorSet colorSets;
+	colorSets.initColorSetFromFile(QString("data/ColorSet/ColorSet0.txt"));
+	colorSet = colorSets.getColorSet(clusterSize);
 	//setMouseTracking(true);
 	bool a=hasMouseTracking();
 
@@ -34,6 +35,13 @@ MainView::MainView(QGraphicsScene* _scene, QWidget* parent) :
 	//QGraphicsRectItem* rect = scene->addRect(-1 * (MAINVIEW_WIDTH >> 1), -1 * (MAINVIEW_HEIGHT >> 1), MAINVIEW_WIDTH, MAINVIEW_HEIGHT, grayPen, grayBrush);
 	QGraphicsRectItem* rect = scene->addRect(0, 0, MAINVIEW_WIDTH, MAINVIEW_HEIGHT, grayPen, grayBrush);
 	scaling = 0.2;
+	
+	setAutoFillBackground(true);
+	QPalette palette;
+	palette.setColor(QPalette::Background, QColor(192, 253, 123));
+	//palette.setBrush(QPalette::Background, QBrush(QPixmap(":/background.png")));
+	setPalette(palette);
+
 	scene->update();
 	setViewportUpdateMode(QGraphicsView::SmartViewportUpdate);
 }
@@ -42,14 +50,16 @@ MainView::MainView(QGraphicsScene* _scene, QWidget* parent) :
 MainView::~MainView()
 {
 }
-//void MainView::resize(const QSize &)
-//{
-//	update();
-//}
+
+void MainView::resize(const QSize &)
+{
+	update();
+}
+
 void MainView::repaint(){
 	
-
-
+	initItemWithData(clusterAll);
+	update();
 
 
 }
@@ -138,6 +148,7 @@ void MainView::initItemWithData(ClusterAll* clusterAll)
 			QRectF classFrame(viewportX + i*distanceWidth + 20, viewportY + currentPosY, classItemsWidth, currentHeight);
 			
 			NEClassItem classItem(classFrame,QPoint(i,j));
+			classItem.setColor(colorSet[j]);
 			classItemsForOneRow.push_back(classItem);
 
 			QVector<NEStripeItem> stripesItems;
@@ -195,6 +206,7 @@ void MainView::initItemWithData(ClusterAll* clusterAll)
 
 					NEStripeItem stripesItem(transframe, scaling);
 					stripesItem.setStripeId(i, j, k);
+					stripesItem.setItemColor(colorSet[j]);
 					stripesItems.push_back(stripesItem);
 					distancePosY += distanceHeight + classItemsInterval;
 			}
@@ -267,6 +279,7 @@ void MainView::mousePressEvent(QMouseEvent *event)
 		itemEventInfo.itemId = 1;
 		itemEventInfo.lastPoint = clickPos;
 		itemEventInfo.classItemIdx = ((NEClassItem *)item)->getItemId();
+
 	}
 	if (item->getTag() == 0)
 	{
@@ -284,20 +297,47 @@ void MainView::mouseMoveEvent(QMouseEvent *event)
 {
 	if (itemEventInfo.itemId==1)
 	{
-	
+	//change classItem;
 		if (itemEventInfo.classItemIdx == QPoint(-1, -1))
 		{
 			return;
 		}
+
+		QSize offset = QSize(event->pos().x() - itemEventInfo.lastPoint.x(), event->pos().y() - itemEventInfo.lastPoint.y());
+
 		QTransform transform;
 		NEClassItem* item = &classItems[itemEventInfo.classItemIdx.x()][itemEventInfo.classItemIdx.y()];
-		QPoint dPos = QPoint(event->pos().x() - itemEventInfo.lastPoint.x(), event->pos().y() - itemEventInfo.lastPoint.y());
-		item->changePos(dPos);
-
+		item->changePos(offset);
 		item->setPos(item->getClassFrame().topLeft());
+		
+//change StripeItem
+		if (itemEventInfo.classItemIdx.x()>0)
+		{
+			int i = itemEventInfo.classItemIdx.x() - 1;
+			int k = itemEventInfo.classItemIdx.y();
+			for (int j = 0; j < stripesItems[i].size();j++)
+			{
+				stripesItems[i][j][k].changeTargetPos(offset);
+				stripesItems[i][j][k].setPos(stripesItems[i][j][k].getItemFrame().topLeft());
+			}
+		}
+		if (itemEventInfo.classItemIdx.x()<stripesItems.size())
+		{
+			int i = itemEventInfo.classItemIdx.x();
+			int j = itemEventInfo.classItemIdx.y();
+			for (int k = 0; k < stripesItems[i][j].size(); k++)
+			{
+				stripesItems[i][j][k].changeSourcePos(offset);
+				stripesItems[i][j][k].setPos(stripesItems[i][j][k].getItemFrame().topLeft());
+			}
+		}
+
+
 		itemEventInfo.lastPoint = event->pos();
 		itemEventInfo.classItemIdx = item->getItemId();
+
 		update();
+		repaint();
 	}
 	
 }
