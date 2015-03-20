@@ -1,6 +1,7 @@
 #include "NetEase.h"
 #include "Model.h"
 #include "Controller.h"
+#include "StatusInfo.h"
 #include <QtWidgets/QApplication>
 
 int main(int argc, char *argv[])
@@ -20,6 +21,9 @@ int main(int argc, char *argv[])
 	netEase.show();
 
 	netEase.paintMainView();
+
+	StatusInfo statusInfo;
+	statusInfo.show();
 
 	return a.exec();
 }

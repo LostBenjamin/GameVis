@@ -45,6 +45,19 @@
     <Filter Include="tool">
       <UniqueIdentifier>{428b11b9-60f9-43eb-a791-a18a331cd476}</UniqueIdentifier>
     </Filter>
+    <Filter Include="QCustomPlot">
+      <UniqueIdentifier>{2abe0cab-91c8-469c-bbb8-a83cb1cb6002}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;cxx;c;def</Extensions>
+      <ParseFiles>true</ParseFiles>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h</Extensions>
+      <ParseFiles>true</ParseFiles>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GeneratedFiles\qrc_NetEase.cpp">
@@ -108,6 +121,30 @@
     <ClCompile Include="NEItem.cpp">
       <Filter>view\SceneObject</Filter>
     </ClCompile>
+    <ClCompile Include="qcustomplot.cpp">
+      <Filter>QCustomPlot</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\X64\moc_qcustomplot.cpp">
+      <Filter>Generated Files\X64</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_qcustomplot.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_qcustomplot.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\X64\moc_StatusInfo.cpp">
+      <Filter>Generated Files\X64</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_StatusInfo.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_StatusInfo.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="StatusInfo.cpp">
+      <Filter>view</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="NetEase.ui">
@@ -130,6 +167,15 @@
     </CustomBuild>
     <CustomBuild Include="NEStripeItem.h">
       <Filter>view\SceneObject</Filter>
+    </CustomBuild>
+    <CustomBuild Include="qcustomplot.h">
+      <Filter>QCustomPlot</Filter>
+    </CustomBuild>
+    <CustomBuild Include="StatusInfo.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="StatusInfo.h">
+      <Filter>view</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
@@ -169,6 +215,9 @@
     </ClInclude>
     <ClInclude Include="NEItem.h">
       <Filter>view\SceneObject</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_StatusInfo.h">
+      <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
